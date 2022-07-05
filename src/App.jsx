@@ -5,6 +5,5 @@ export default () => (
   <>
     <h1>TIC TAC TOE</h1>
     <Board />
-    <Board />
   </>
 );
