@@ -1,21 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Square from './Square';
 
-export default function Board() {
-  const [board, setBoard] = useState(Array(9).fill(null));
-  const [isNext, setIsNext] = useState(false);
-  const handlingClick = position => {
-    if (board[position]) {
-      return;
-    }
-    setBoard(preVal => {
-      return preVal.map((val, pos) => {
-        const res = position === pos ? (isNext ? 'X' : 'O') : val;
-        return res;
-      });
-    });
-    setIsNext(previous => !previous);
-  };
+export default function Board({ board, handlingClick }) {
   return (
     <div className="board">
       <div className="board-row">
