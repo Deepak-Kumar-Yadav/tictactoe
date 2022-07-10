@@ -5,7 +5,7 @@ export default function Status({ winner, current }) {
   // ? `Winner is ${winner}`
   // : `Next player is ${current.isNext ? 'X' : 'O'}`;
   const noMovesLeft = current.board.every(val => {
-    val === null ? false : true;
+    return val !== null ? true : false;
   });
   return (
     <h1>

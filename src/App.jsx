@@ -4,6 +4,7 @@ import History from './Components/History';
 import './Styles/root.scss';
 import calculateWinner from './helper';
 import Status from './Components/Status';
+import NewGame from './Components/NewGame';
 
 export default function App() {
   const newGame = [{ board: Array(9).fill(null), isNext: false }];
@@ -41,9 +42,7 @@ export default function App() {
       <h1>TIC TAC TOE</h1>
       <Status winner={winner} current={current} />
       <Board board={current.board} handlingClick={handlingClick} />
-      <button type="button" onClick={restart}>
-        New Game
-      </button>
+      <NewGame restart={restart} />
       <History
         history={history}
         moveTo={moveTo}
