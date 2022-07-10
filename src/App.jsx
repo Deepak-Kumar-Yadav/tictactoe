@@ -6,9 +6,8 @@ import calculateWinner from './helper';
 import Status from './Components/Status';
 
 export default function App() {
-  const [history, setHistory] = useState([
-    { board: Array(9).fill(null), isNext: false },
-  ]);
+  const newGame = [{ board: Array(9).fill(null), isNext: false }];
+  const [history, setHistory] = useState(newGame);
   const [currentPosition, setCurrentPosition] = useState(0);
   const current = history[currentPosition];
   const winner = calculateWinner(current.board);
@@ -32,11 +31,19 @@ export default function App() {
     setCurrentPosition(move);
   };
 
+  const restart = () => {
+    setHistory(newGame);
+    setCurrentPosition(0);
+  };
+
   return (
     <div className="app">
       <h1>TIC TAC TOE</h1>
       <Status winner={winner} current={current} />
       <Board board={current.board} handlingClick={handlingClick} />
+      <button type="button" onClick={restart}>
+        New Game
+      </button>
       <History
         history={history}
         moveTo={moveTo}
