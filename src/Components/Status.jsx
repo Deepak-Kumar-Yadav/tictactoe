@@ -8,12 +8,24 @@ export default function Status({ winner, current }) {
     return val !== null ? true : false;
   });
   return (
-    <h1>
-      {winner && `Winner is ${winner}`}
-      {!winner &&
-        !noMovesLeft &&
-        `Next player is ${current.isNext ? 'X' : 'O'}`}
+    <div className="status-message">
+      {winner && (
+        <>
+          winner is{' '}
+          <span className={winner === 'X' ? 'text-green' : 'text-orange'}>
+            {winner}
+          </span>
+        </>
+      )}
+      {!winner && !noMovesLeft && (
+        <>
+          Next player is{' '}
+          <span className={current.isNext ? 'text-green' : 'text-orange'}>
+            {current.isNext ? 'X' : 'O'}
+          </span>
+        </>
+      )}
       {!winner && noMovesLeft && `Game is tied`}
-    </h1>
+    </div>
   );
 }
