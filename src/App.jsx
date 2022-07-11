@@ -11,7 +11,7 @@ export default function App() {
   const [history, setHistory] = useState(newGame);
   const [currentPosition, setCurrentPosition] = useState(0);
   const current = history[currentPosition];
-  const winner = calculateWinner(current.board);
+  const { winner, winnerSquares } = calculateWinner(current.board);
 
   const handlingClick = position => {
     if (current.board[position] || winner) {
@@ -41,7 +41,11 @@ export default function App() {
     <div className="app">
       <h1>TIC TAC TOE</h1>
       <Status winner={winner} current={current} />
-      <Board board={current.board} handlingClick={handlingClick} />
+      <Board
+        board={current.board}
+        handlingClick={handlingClick}
+        winnerSquares={winnerSquares}
+      />
       <NewGame restart={restart} />
       <History
         history={history}
